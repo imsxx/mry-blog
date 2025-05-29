@@ -1,23 +1,16 @@
-# backend 部分定义了 CMS 如何连接到你的 GitHub 仓库
 backend:
   name: github
-  repo: imsxx/mry-blog # 你的 GitHub 用户名和仓库名
-  branch: main # 你的主分支名
-  site_domain: mry-blog.pages.dev # <--- 修改这里！确保与你访问 admin 的域名一致
+  repo: imsxx/mry-blog # 确认这是你的仓库
+  branch: main # 确认这是你的主分支
+  site_domain: mry-blog.pages.dev # 确认这是你的 Cloudflare Pages 域名
 
-# media_folder 指定了图片等媒体文件上传后存储在仓库中的路径
-media_folder: "assets/uploads" # 图片会存到仓库的 assets/uploads 目录下
-# public_folder 指定了媒体文件在最终网站上的访问路径
-public_folder: "/assets/uploads" # 图片在网站上的访问路径
+media_folder: "static/uploads" # 这是一个占位，确保它不会引起歧义
+public_folder: "/uploads"    # 同上
 
-# collections 定义了你的内容类型，这里以博客文章为例
 collections:
-  - name: "blog" # 集合的标识符
-    label: "博客文章" # 在 CMS 界面中显示的名称
-    folder: "_posts" # 文章 Markdown 文件存储在仓库中的路径
-    create: true # 允许在 CMS 中创建新文章
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # 文件名的生成规则
-    fields: # 定义每篇文章包含哪些字段
-      - {label: "标题", name: "title", widget: "string"}
-      - {label: "发布日期", name: "date", widget: "datetime"}
-      - {label: "正文", name: "body", widget: "markdown"}
+  - name: "test"
+    label: "Test Collection"
+    folder: "_test" # 确保你的 GitHub 仓库根目录下有一个名为 _test 的文件夹
+    create: true
+    fields:
+      - {label: "Title", name: "title", widget: "string"}
