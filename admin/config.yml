@@ -3,7 +3,7 @@ backend:
   name: github
   repo: imsxx/mry-blog # 替换为你的 GitHub 用户名和仓库名
   branch: main # 或者 master，取决于你的主分支名
-  # site_domain: maruoyan.com # 部署并配置自定义域名后，如果遇到 OAuth 问题，可以回来设置这个
+  site_domain: mry-blog.pages.dev # 部署并配置自定义域名后，如果遇到 OAuth 问题，可以回来设置这个
 
 # media_folder 指定了图片等媒体文件上传后存储在仓库中的路径
 media_folder: "assets/uploads" # 图片会存到仓库的 assets/uploads 目录下
