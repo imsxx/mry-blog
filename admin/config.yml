@@ -1,16 +1,23 @@
 backend:
   name: github
-  repo: imsxx/mry-blog # 确认这是你的仓库
-  branch: main # 确认这是你的主分支
-  site_domain: mry-blog.pages.dev # 确认这是你的 Cloudflare Pages 域名
+  repo: imsxx/mry-blog
+  branch: main
+  site_domain: mry-blog.pages.dev # 你的 Pages 域名
 
-media_folder: "static/uploads" # 这是一个占位，确保它不会引起歧义
-public_folder: "/uploads"    # 同上
+  # === 新增或修改以下两行 ===
+  auth_proxy: true
+  auth_endpoint: /.netlify/functions/auth # 指向你的 Cloudflare Pages Function 路径
+  # ^^^ 注意：Decap CMS 仍然使用 .netlify/functions 这种 Netlify 风格的路径，
+  # 但 Cloudflare Pages 默认会将 `functions` 目录下的文件映射到 `/.netlify/functions/` 下
+  # 所以 `functions/auth.js` 会被 Pages 暴露为 `/.netlify/functions/auth`
+
+media_folder: "static/uploads"
+public_folder: "/uploads"
 
 collections:
   - name: "test"
     label: "Test Collection"
-    folder: "_test" # 确保你的 GitHub 仓库根目录下有一个名为 _test 的文件夹
+    folder: "_test"
     create: true
     fields:
       - {label: "Title", name: "title", widget: "string"}
