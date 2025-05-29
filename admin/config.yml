@@ -1,0 +1,23 @@
+# backend 部分定义了 CMS 如何连接到你的 GitHub 仓库
+backend:
+  name: github
+  repo: imsxx/mry-blog # 替换为你的 GitHub 用户名和仓库名
+  branch: main # 或者 master，取决于你的主分支名
+  # site_domain: maruoyan.com # 部署并配置自定义域名后，如果遇到 OAuth 问题，可以回来设置这个
+
+# media_folder 指定了图片等媒体文件上传后存储在仓库中的路径
+media_folder: "assets/uploads" # 图片会存到仓库的 assets/uploads 目录下
+# public_folder 指定了媒体文件在最终网站上的访问路径
+public_folder: "/assets/uploads" # 图片在网站上的访问路径
+
+# collections 定义了你的内容类型，这里以博客文章为例
+collections:
+  - name: "blog" # 集合的标识符
+    label: "博客文章" # 在 CMS 界面中显示的名称
+    folder: "_posts" # 文章 Markdown 文件存储在仓库中的路径
+    create: true # 允许在 CMS 中创建新文章
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # 文件名的生成规则
+    fields: # 定义每篇文章包含哪些字段
+      - {label: "标题", name: "title", widget: "string"}
+      - {label: "发布日期", name: "date", widget: "datetime"}
+      - {label: "正文", name: "body", widget: "markdown"}
